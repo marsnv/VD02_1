@@ -34,27 +34,24 @@ html_content = """
 </head>
 <body>
     <h1>Список Салатов</h1>
-    <table>
-        <tr>
-            <th>Название блюда</th>
-            <th>Оценка</th>
-            <th>Ссылка на рецепт</th>
-            <th>Фото блюда</th>
-        </tr>
+    <div class="cards">
 """
-
 for dish in dishes:
     html_content += f"""
-        <tr>
-            <td>{dish['name']}</td>
-            <td>{dish['rating']}</td>
-            <td><a href="{dish['recipe_link']}" target="_blank">Рецепт</a></td>
-            <td><img src="{dish['image_src']}" alt="{dish['name']}" width="100"></td>
-        </tr>
-    """
+        <div class="card">
+           <div class="photo">
+               <img src="{dish['image_src']}" alt="{dish['name']}"">
+           </div>
+           <div class="info">
+                <h1 class="name">{dish['name']}</h1>               
+                <a href="{dish['recipe_link']}" target="_blank">Рецепт</a>
+                <p class="rating">Оценка: {dish['rating']}</p>
+           </div>
+        </div>
+     """
 
 html_content += """
-    </table>
+    </div>
 </body>
 </html>
 """
