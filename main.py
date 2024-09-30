@@ -11,7 +11,7 @@ soup = BeautifulSoup(response.text, 'html.parser')
 
 # Извлечение информации о 5 блюдах
 dishes = []
-for item in soup.select('.recipe')[:5]:
+for item in soup.select('.recipe')[:8]:
     name = item.select_one('.listRecipieTitle').get_text(strip=True)
     link = 'https://povar.ru'+item.select_one('a')['href']
     image = item.select_one('span.a img[src]')['src']
@@ -37,18 +37,18 @@ html_content = """
     <div class="cards">
 """
 for dish in dishes:
-    html_content += f"""
-        <div class="card">
-           <div class="photo">
-               <img src="{dish['image_src']}" alt="{dish['name']}"">
-           </div>
-           <div class="info">
-                <h1 class="name">{dish['name']}</h1>               
-                <a href="{dish['recipe_link']}" target="_blank">Рецепт</a>
-                <p class="rating">Оценка: {dish['rating']}</p>
-           </div>
-        </div>
-     """
+    html_content += (f"\n"
+                     f"        <div class=\"card\">\n"
+                     f"           <div class=\"photo\">\n"
+                     f"               <img src=\"{dish['image_src']}\" alt=\'{dish['name']}\'>\n"
+                     f"           </div>\n"
+                     f"           <div class=\"info\">\n"
+                     f"                <h1 class=\"name\">{dish['name']}</h1>               \n"
+                     f"                <a href=\"{dish['recipe_link']}\" target=\"_blank\">Рецепт</a>\n"
+                     f"                <p class=\"rating\">Оценка: {dish['rating']}</p>\n"
+                     f"           </div>\n"
+                     f"        </div>\n"
+                     f"     ")
 
 html_content += """
     </div>
