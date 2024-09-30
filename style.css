@@ -1,0 +1,12 @@
+table{
+    background-color: #ddd;
+    border: 2px;
+    height: 400px;
+    width: 800px;
+    }
+.card{
+   width: 400px;
+   height: 650px;
+   background-color: burlywood;
+   border-radius: 60px;
+}
